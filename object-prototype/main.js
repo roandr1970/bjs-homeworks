@@ -1,17 +1,23 @@
+
 function initCheckBirthday() {
     const birthday = document.getElementById('birthday').value;
 
-    const result = checkBirthday(birthday) ? "Да" : "Нет";
+    const result = checkBirthday(birthday);
 
     document.getElementById('disclaimer').innerHTML = result;   
 }
 
 function checkBirthday(birthday) {
-    // код для задачи №1 писать здесь
+    const now = Number(new Date());
+    birthday = Number(new Date(birthday));
+    const diff = now - birthday;
+    let age = Math.floor(diff / (365.242 * 60 * 60 * 24 * 1000)); 
+    
+    return (age >= 18) ? "Да" : "Нет";
 }
 
 function initPrintAnimalSound() {
-    const animal = {
+    const animal= {
         sound: 'grrrr',
     };
 
@@ -21,7 +27,13 @@ function initPrintAnimalSound() {
 }
 
 function getAnimalSound(animal) {
-    // код для задачи №2 писать здесь
+    let sound = animal.sound;
+
+    if (animal === undefined) {
+    sound = null;
+    } 
+
+    return sound;
 }
 
 function initCalculateStatement() {
@@ -35,5 +47,18 @@ function initCalculateStatement() {
 }
 
 function getAverageMark(marks) {
-    // код для задачи №3 писать здесь
+    let sum = 0;
+
+    for (let i = 0; i < marks.length; i++) {
+        sum = sum + parseInt(marks[i]);
+    }
+
+    const average = sum / marks.length;
+
+    const roundedAverage = Math.round (average);
+
+    console.log (roundedAverage);
+
+    return roundedAverage;
+
 }
