@@ -4,6 +4,8 @@ class Weapon {
         this.attack = attack;
         this.durability = durability;
         this.range = range;
+        this.initialDurability = 1000;
+
     }
 
     takeDamage(damage) {
@@ -13,44 +15,45 @@ class Weapon {
             this.durability = 0;
         }
     }
-/*
+
     getDamage() {
-        if (durability >= this.durability * 0.3) {
+        if (this.durability >= this.initialDurability * 0.3) {
             return this.attack;
         }
-        else {
+        else if (this.durability === 0) {
+            return 0;
+        } else {
             return this.attack / 2;
         }
     }
-*/
+
     isBroken() {
-
-       if (this.durability > 0) {
-           return false;
-       } else {
-           return true;
-       }
-
+        let a = (this.durability > 0) ? false : true;
+        return a;
     }
 }
-
-
 
 const sword = new Weapon ("Старый меч",25,500,1);
 
 console.log(sword.durability);
 
-sword.takeDamage(600);
+sword.takeDamage(400);
 
 console.log(sword.durability);
+
+console.log (sword.getDamage());
 
 console.log(sword.isBroken());
 
 const hand = new Weapon ("Рука",1,Infinity,1);
 
+console.log(hand.durability);
+
 hand.takeDamage(100);
 
 console.log(hand.durability);
+
+console.log (hand.getDamage());
 
 console.log(hand.isBroken());
 
@@ -61,4 +64,23 @@ const staff = new Weapon ("Посох",8,300,2);
 const longBow = new Weapon("Длинный лук",15,200,4);
 const axe = new Weapon ("Секира",27,800,1);
 
+/* Задание 2*/ 
+
+class conventionalWeapons extends Weapon {
+    constructor(name,attack,durability,range) {
+        super(name,attack,durability,range);
+        
+        this.initialDurability = 700;
+    }
+}
+
+const arm = new conventionalWeapons();
+console.log(arm.name);
+
+/*
+
+class reinforcedWeapon extends conventionalWeapons {
+
+}
+*/
   
