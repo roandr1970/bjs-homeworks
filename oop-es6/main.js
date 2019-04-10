@@ -4,7 +4,7 @@ class Weapon {
         this.attack = attack;
         this.durability = durability;
         this.range = range;
-        this.initialDurability = 1000;
+        this.initialDurability = 700;
 
     }
 
@@ -60,60 +60,110 @@ console.log(hand.isBroken());
 //Задание 2
 class Arm extends Weapon {
     constructor (name,attack,durability,range) {
-        super();
-        this.option = {
-        name: "Рука",
-        attack: 1,
-        durability: Infinity,
-        range: 1,
-        initialDurability: 1000
-        };
+        super(name,attack,durability,range);
+        this.initialDurability = 700;
     };
 };
 
-const arm = new Arm();
-console.log (arm.option.name);
 
+const arm = new Arm("Рука",1,Infinity,1);
+console.log (arm.name);
+console.log (arm.durability);
+arm.takeDamage(100);
+console.log (arm.durability);
+console.log (arm.getDamage());
+console.log(arm.isBroken());
 
 class Bow extends Weapon {
     constructor (name,attack,durability,range) {
-        super();
-        this.option = {
-        name: "Лук",
-        attack: 10,
-        durability: 200,
-        range: 3,
-        initialDurability: 1000
-        };
+        super(name,attack,durability,range);
+        this.initialDurability = 700;
     };
 };
 
-const bow = new Bow();
-console.log (bow.option.name);
-console.log (bow.option.durability);
+const bow = new Bow("Лук",10,200,3);
+console.log (arm.name);
+console.log (arm.durability);
+bow.takeDamage(100);
+console.log (arm.durability);
+console.log (arm.getDamage());
+console.log(arm.isBroken());
 
 class Sword extends Weapon {
     constructor (name,attack,durability,range) {
-        super();
-        this.option = {
-        name: "Меч",
-        attack: 25,
-        durability: 500,
-        range: 1,
-        initialDurability: 700
-        };
+        super(name,attack,durability,range);
+        this.initialDurability = 700;
     };
 };
 
-const sword = new Sword();
+class Staff extends Weapon {
+    constructor (name,attack,durability,range) {
+        super(name,attack,durability,range);
+        this.initialDurability = 700;
+    };
+};
 
-console.log(sword.option.durability);
-
+const sword = new Sword("Меч",25,500,1);
+console.log (sword.name);
+console.log (sword.durability);
 sword.takeDamage(600);
-
-console.log(sword.option.durability);
-
+console.log (sword.durability);
 console.log (sword.getDamage());
-
 console.log(sword.isBroken());
 
+class Longbow extends Bow {
+    constructor () {
+        super();
+        this.name = "Длинный лук";
+        this.attack = 15;
+        this.durability = 200;
+        this.range = 4;
+        this.initialDurability = 700;
+    };
+};
+
+const longbow = new Longbow();
+console.log (longbow.name);
+console.log (longbow.durability);
+longbow.takeDamage(100);
+console.log (longbow.durability);
+console.log (longbow.getDamage());
+console.log(longbow.isBroken());
+
+class Ax extends Sword {
+    constructor () {
+        super();
+        this.name = "Секира";
+        this.attack = 27;
+        this.durability = 800;
+        this.range = 1;
+        this.initialDurability = 1000;
+    };
+};
+
+const ax = new Ax();
+console.log (ax.name);
+console.log (ax.durability);
+ax.takeDamage(100);
+console.log (ax.durability);
+console.log (ax.getDamage());
+console.log(ax.isBroken());
+
+class StormStaff extends Staff {
+    constructor () {
+        super();
+        this.name = "Посох бури";
+        this.attack = 10;
+        this.durability = 300;
+        this.range = 3;
+        this.initialDurability = 1000;
+    };
+};
+
+const stormStaff = new StormStaff();
+console.log (stormStaff.name);
+console.log (stormStaff.durability);
+stormStaff.takeDamage(400);
+console.log (stormStaff.durability);
+console.log (stormStaff.getDamage());
+console.log(stormStaff.isBroken());
