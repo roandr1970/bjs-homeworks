@@ -1,21 +1,17 @@
-function compareArrays( arr1, arr2 ) {
-    if(arr1.length == arr2.length) {
-        for (let i = 0; i < arr1.length; i++) {
-            if (arr1[i] !== arr2[i]) {
-                return false;
-            }
-        };
-    } else {
-        return false
-      };
-    return true;
-};
-
-function main(func) {
-    func();
+function compareArrays (arr1,arr2) {
+    (arr1.length === arr2.length) ? console.log ( arr1.every((value, index) => value === arr2[index])) : console.log (false);
 }
 
-const a = [1,2,3];
-const b = [1,2,3];
+compareArrays([1,2,3],[1,2,3]);
+compareArrays([2,3],[1,2,3]);
+compareArrays([3,2,1],[1,2,3]);
+compareArrays([1,2,3],[3]);
 
-main (compareArrays(a,b));
+function memoize(fn, limit) {
+    let result = [{
+      args: [],
+      result
+    }];
+    return function fn() {
+    }
+}
