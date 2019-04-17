@@ -1,20 +1,31 @@
-ffunction compareArrays (arr1,arr2) {
-    return (arr1.length === arr2.length) ? arr1.every((value, index) => value === arr2[index]) : false;
+function compareArrays (arr1,arr2) {
+  return (arr1.length === arr2.length) ? arr1.every((value, index) => value === arr2[index]) : false;
 }
-
-compareArrays([1,2,3],[1,2,3]);
-compareArrays([2,3],[1,2,3]);
-compareArrays([3,2,1],[1,2,3]);
-compareArrays([1,2,3],[3]);
-
 
 function memoize(fn, limit) {
-    let results = [{
-      args: [],
-      result
-    }];
-    
-    return function fn() {
-      const task = results.find(resul => resul.args ===  )
+  let results = [{
+    args: [],
+    result: 0
+  }];
+  
+  return function fn() {
+    let arg = Array.from(arguments);
+    let task = results.find(compareArrays(currentValue, index, arg));
+    if(task !== undefined) {
+      return results;
+    } else {
+        let sum = 0;
+        for (let i = 0; i < arg.length; i++) {
+            sum = sum + arg[i];
+        }
+        results.push(arg,sum);
+     }
+     
+    if (results.length >= limit) {
+      results.shift();  
     }
+    return results;
+  }  
 }
+
+console.log(memoize(1,2,3));
